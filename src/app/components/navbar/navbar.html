@@ -1,0 +1,43 @@
+<nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" [class.navbar-scrolled]="isScrolled()">
+  <div class="container-custom px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <a href="#home" (click)="scrollToSection('#home', $event)" class="flex items-center gap-2 group">
+        <div class="w-9 h-9 rounded-xl flex items-center justify-center text-white font-bold text-sm transition-transform group-hover:scale-110" style="background: linear-gradient(135deg, #8b5cf6, #d946ef)">SS</div>
+        <span class="font-display font-bold text-xl text-slate-800">Simi<span class="gradient-text">.</span>dev</span>
+      </a>
+      <div class="hidden md:flex items-center gap-1">
+        @for (item of navItems; track item.href) {
+          <a [href]="item.href" (click)="scrollToSection(item.href, $event)"
+            class="px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200"
+            [class.text-lavender-600]="activeSection() === item.href.replace('#', '')"
+            [class.text-slate-600]="activeSection() !== item.href.replace('#', '')"
+            [class.bg-lavender-50]="activeSection() === item.href.replace('#', '')">
+            {{ item.label }}
+          </a>
+        }
+        <a href="#contact" (click)="scrollToSection('#contact', $event)" class="ml-3 btn-primary text-sm px-5 py-2">Hire Me</a>
+      </div>
+      <button class="md:hidden flex flex-col gap-1.5 p-2 rounded-lg hover:bg-lavender-50 transition-colors" (click)="toggleMobileMenu()" aria-label="Toggle menu">
+        <span class="block w-5 h-0.5 bg-slate-700 transition-all duration-300" [class.rotate-45]="isMobileMenuOpen()" [class.translate-y-2]="isMobileMenuOpen()"></span>
+        <span class="block w-5 h-0.5 bg-slate-700 transition-all duration-300" [class.opacity-0]="isMobileMenuOpen()"></span>
+        <span class="block w-5 h-0.5 bg-slate-700 transition-all duration-300" [class.-rotate-45]="isMobileMenuOpen()" [class.-translate-y-2]="isMobileMenuOpen()"></span>
+      </button>
+    </div>
+  </div>
+  @if (isMobileMenuOpen()) {
+    <div class="md:hidden bg-white/95 backdrop-blur-lg border-t border-lavender-100 animate-slide-down">
+      <div class="px-4 py-4 space-y-1">
+        @for (item of navItems; track item.href) {
+          <a [href]="item.href" (click)="scrollToSection(item.href, $event)"
+            class="flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200"
+            [class.bg-lavender-50]="activeSection() === item.href.replace('#', '')"
+            [class.text-lavender-600]="activeSection() === item.href.replace('#', '')"
+            [class.text-slate-700]="activeSection() !== item.href.replace('#', '')">
+            {{ item.label }}
+          </a>
+        }
+        <div class="pt-2"><a href="#contact" (click)="scrollToSection('#contact', $event)" class="btn-primary w-full justify-center text-sm">Hire Me</a></div>
+      </div>
+    </div>
+  }
+</nav>

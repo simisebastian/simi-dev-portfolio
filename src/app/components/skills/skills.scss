@@ -1,0 +1,6 @@
+:host { display: block; }
+.skill-bar-inner {
+  width: 0;
+  transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+  &.animate-width { width: var(--progress-width, 80%); }
+}
