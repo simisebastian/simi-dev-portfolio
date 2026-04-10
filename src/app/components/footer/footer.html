@@ -1,0 +1,42 @@
+<footer class="py-12 px-4" style="background: linear-gradient(180deg, #1e1b4b 0%, #0f0a1e 100%)">
+  <div class="container-custom">
+    <!-- Top row -->
+    <div class="flex flex-col md:flex-row items-center justify-between gap-8 mb-10 pb-10 border-b border-white/10">
+      <!-- Brand -->
+      <a href="#home" (click)="scrollToSection('#home', $event)" class="flex items-center gap-2 group">
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center text-white font-bold text-sm shadow-lg" style="background: linear-gradient(135deg, #8b5cf6, #d946ef)">SS</div>
+        <span class="font-display font-bold text-2xl text-white">Simi<span style="background: linear-gradient(135deg, #c4b5fd, #f9a8d4); -webkit-background-clip: text; -webkit-text-fill-color: transparent">.</span>dev</span>
+      </a>
+
+      <!-- Nav -->
+      <nav class="flex flex-wrap justify-center gap-x-6 gap-y-2">
+        @for (link of navLinks; track link.href) {
+          <a [href]="link.href" (click)="scrollToSection(link.href, $event)"
+             class="text-slate-400 hover:text-white text-sm transition-colors duration-200">
+            {{ link.label }}
+          </a>
+        }
+      </nav>
+
+      <!-- Social -->
+      <div class="flex items-center gap-3">
+        @for (social of socialLinks; track social.label) {
+          <a [href]="social.href" target="_blank" rel="noopener" [attr.aria-label]="social.label"
+             class="w-9 h-9 rounded-lg flex items-center justify-center bg-white/10 hover:bg-white/20 text-slate-400 hover:text-white transition-all duration-200">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+              <path [attr.d]="social.icon"/>
+            </svg>
+          </a>
+        }
+      </div>
+    </div>
+
+    <!-- Bottom row -->
+    <div class="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-slate-500">
+      <p>© {{ year }} Simi Sebastian. All rights reserved.</p>
+      <p class="flex items-center gap-1">
+        Built with <span class="text-red-400">♥</span> using Angular &amp; Tailwind CSS
+      </p>
+    </div>
+  </div>
+</footer>

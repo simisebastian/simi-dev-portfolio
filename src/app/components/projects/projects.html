@@ -1,0 +1,50 @@
+<section id="projects" class="section-padding bg-white">
+  <div class="container-custom">
+    <!-- Header -->
+    <div class="text-center mb-12 observe-animate">
+      <p class="text-lavender-600 font-semibold tracking-widest uppercase text-sm mb-2">What I've built</p>
+      <h2 class="section-title">Featured <span class="gradient-text">Projects</span></h2>
+      <div class="w-16 h-1 mx-auto rounded-full mb-4" style="background: linear-gradient(90deg, #8b5cf6, #d946ef)"></div>
+      <p class="section-subtitle mx-auto">A selection of projects that showcase my skills and passion for building great software.</p>
+    </div>
+
+    <!-- Filters -->
+    <div class="flex flex-wrap justify-center gap-2 mb-12 observe-animate">
+      @for (f of filters; track f) {
+        <button (click)="activeFilter.set(f)"
+                class="px-5 py-2 rounded-full text-sm font-semibold transition-all duration-200"
+                [class.text-white]="activeFilter() === f"
+                [class.text-slate-600]="activeFilter() !== f"
+                [class.shadow-md]="activeFilter() === f"
+                [style.background]="activeFilter() === f ? 'linear-gradient(135deg, #8b5cf6, #d946ef)' : 'transparent'"
+                [style.border]="activeFilter() !== f ? '2px solid #e2e8f0' : '2px solid transparent'">
+          {{ f }}
+        </button>
+      }
+    </div>
+
+    <!-- Grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 observe-animate">
+      @for (project of filteredProjects; track project.title) {
+        <div class="card-glass group relative overflow-hidden flex flex-col">
+          @if (project.featured) {
+            <div class="absolute top-4 right-4 tag text-xs">Featured</div>
+          }
+          <!-- Icon -->
+          <div class="w-14 h-14 rounded-2xl flex items-center justify-center text-2xl mb-4 shadow-md" [style.background]="project.gradient">
+            {{ project.emoji }}
+          </div>
+          <!-- Content -->
+          <h3 class="font-display text-xl font-bold text-slate-800 mb-2">{{ project.title }}</h3>
+          <p class="text-slate-500 text-sm leading-relaxed line-clamp-3 flex-1 mb-4">{{ project.description }}</p>
+          <!-- Tags -->
+          <div class="flex flex-wrap gap-1.5">
+            @for (tag of project.tags; track tag) {
+              <span class="tag">{{ tag }}</span>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

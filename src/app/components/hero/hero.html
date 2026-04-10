@@ -1,0 +1,75 @@
+<section id="home" class="relative min-h-screen flex items-center overflow-hidden" style="background: linear-gradient(135deg, #faf5ff 0%, #fdf4ff 40%, #fff1f2 100%)">
+  <!-- Blobs -->
+  <div class="absolute top-20 left-10 w-72 h-72 blob opacity-30" style="background: linear-gradient(135deg, #c4b5fd, #f9a8d4)"></div>
+  <div class="absolute bottom-20 right-10 w-96 h-96 blob opacity-20" style="background: linear-gradient(135deg, #fda4af, #d946ef); animation-delay: 3s"></div>
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 blob opacity-10" style="background: #8b5cf6; animation-delay: 6s"></div>
+
+  <div class="container-custom section-padding relative z-10 w-full">
+    <div class="max-w-4xl mx-auto text-center">
+      <!-- Badge -->
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/70 border border-lavender-200 text-sm text-lavender-700 font-medium mb-8 backdrop-blur-sm shadow-sm"
+           [class.opacity-0]="!isVisible()"
+           style="transition: opacity 0.8s ease, transform 0.8s ease"
+           [style.transform]="isVisible() ? 'translateY(0)' : 'translateY(20px)'">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        Available for new opportunities
+      </div>
+
+      <!-- Name -->
+      <h1 class="font-display text-6xl md:text-8xl font-bold mb-4 leading-tight"
+          [class.opacity-0]="!isVisible()"
+          style="transition: opacity 0.8s ease 0.2s, transform 0.8s ease 0.2s"
+          [style.transform]="isVisible() ? 'translateY(0)' : 'translateY(30px)'">
+        <span class="text-slate-800">Simi</span>
+        <span class="gradient-text"> Sebastian</span>
+      </h1>
+
+      <!-- Typewriter -->
+      <div class="text-2xl md:text-3xl font-semibold text-slate-600 mb-6 h-10"
+           [class.opacity-0]="!isVisible()"
+           style="transition: opacity 0.8s ease 0.4s, transform 0.8s ease 0.4s"
+           [style.transform]="isVisible() ? 'translateY(0)' : 'translateY(20px)'">
+        <span class="font-mono text-lavender-600">{{ displayedText() }}</span><span class="typewriter-cursor">|</span>
+      </div>
+
+      <!-- Description -->
+      <p class="text-lg md:text-xl text-slate-500 mb-10 max-w-2xl mx-auto leading-relaxed"
+         [class.opacity-0]="!isVisible()"
+         style="transition: opacity 0.8s ease 0.6s, transform 0.8s ease 0.6s"
+         [style.transform]="isVisible() ? 'translateY(0)' : 'translateY(20px)'">
+        Crafting pixel-perfect, performant web applications with a passion for clean code and delightful user experiences. Based in Germany &amp; open to remote.
+      </p>
+
+      <!-- CTAs -->
+      <div class="flex flex-wrap gap-4 justify-center mb-16"
+           [class.opacity-0]="!isVisible()"
+           style="transition: opacity 0.8s ease 0.8s, transform 0.8s ease 0.8s"
+           [style.transform]="isVisible() ? 'translateY(0)' : 'translateY(20px)'">
+        <a href="#projects" (click)="scrollToSection('projects')" class="btn-primary text-base px-8 py-3.5">
+          View My Work
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+        <a href="#contact" (click)="scrollToSection('contact')" class="btn-outline text-base px-8 py-3.5">Get In Touch</a>
+      </div>
+
+      <!-- Stats -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto"
+           [class.opacity-0]="!isVisible()"
+           style="transition: opacity 0.8s ease 1s, transform 0.8s ease 1s"
+           [style.transform]="isVisible() ? 'translateY(0)' : 'translateY(20px)'">
+        @for (stat of stats; track stat.label) {
+          <div class="card-glass text-center py-5">
+            <div class="font-display text-3xl font-bold gradient-text">{{ stat.value }}</div>
+            <div class="text-sm text-slate-500 mt-1">{{ stat.label }}</div>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-400 animate-bounce">
+    <span class="text-xs tracking-widest uppercase">Scroll</span>
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+  </div>
+</section>

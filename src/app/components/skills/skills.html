@@ -1,0 +1,50 @@
+<section id="skills" class="section-padding" style="background: linear-gradient(180deg, #faf5ff 0%, #fdf4ff 100%)">
+  <div class="container-custom">
+    <!-- Header -->
+    <div class="text-center mb-16 observe-animate">
+      <p class="text-lavender-600 font-semibold tracking-widest uppercase text-sm mb-2">What I work with</p>
+      <h2 class="section-title">My <span class="gradient-text">Skills</span></h2>
+      <div class="w-16 h-1 mx-auto rounded-full mb-4" style="background: linear-gradient(90deg, #8b5cf6, #d946ef)"></div>
+      <p class="section-subtitle mx-auto">A snapshot of the technologies and tools I use to build modern web applications.</p>
+    </div>
+
+    <!-- Skill bars -->
+    <div class="grid md:grid-cols-2 gap-10 mb-16">
+      @for (cat of categories; track cat.title) {
+        <div class="card-glass observe-animate">
+          <h3 class="font-semibold text-lg text-slate-800 mb-6 flex items-center gap-2">
+            <span>{{ cat.icon }}</span> {{ cat.title }}
+          </h3>
+          <div class="space-y-5">
+            @for (skill of cat.skills; track skill.name) {
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span class="text-sm font-medium text-slate-700">{{ skill.name }}</span>
+                  <span class="text-sm font-semibold" [style.color]="skill.color">{{ skill.level }}%</span>
+                </div>
+                <div class="h-2 bg-slate-100 rounded-full overflow-hidden">
+                  <div class="skill-bar-inner h-full rounded-full"
+                       [style.--progress-width]="skill.level + '%'"
+                       [style.background]="skill.color"></div>
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+      }
+    </div>
+
+    <!-- Tech pill grid -->
+    <div class="observe-animate">
+      <p class="text-center text-sm font-semibold text-slate-600 uppercase tracking-wider mb-6">Technologies &amp; Ecosystem</p>
+      <div class="flex flex-wrap justify-center gap-3">
+        @for (tech of techs; track tech.name) {
+          <div class="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white border border-lavender-100 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 cursor-default" data-stagger>
+            <span>{{ tech.icon }}</span>
+            <span class="text-sm font-medium text-slate-700">{{ tech.name }}</span>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</section>
